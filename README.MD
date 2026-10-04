@@ -33,8 +33,8 @@ Following the course's Process Algorithms SDLC. Documented so far:
 | ------------------------------------------------- | --------------------------------------------------------------------------- | -------------- |
 | 1. Problem Definition                             | [`docs/sdlc/01-problem-definition.md`](docs/sdlc/01-problem-definition.md) | ✅ Done        |
 | 2. Problem Analysis                               | [`docs/sdlc/02-problem-analysis.md`](docs/sdlc/02-problem-analysis.md)     | ✅ Done        |
-| 3. Algorithm Design (pseudocode, data structures) | `docs/sdlc/03-algorithm-design.md`                                        | ⬜ Not started |
-| 4. Threat Model (STRIDE)                          | `docs/sdlc/04-threat-model.md`                                            | ⬜ Not started |
+| 3. Algorithm Design (pseudocode, data structures) | `docs/sdlc/03-algorithm-design.md`                                        | ✅ Done        |
+| 4. Threat Model (STRIDE)                          | `docs/sdlc/04-threat-model.md`                                            | ✅ Done        |
 | 5. Implementation                                 | `src/`                                                                    | ⬜ Not started |
 | 6. Verification (tests, fuzzing, SAST, SCA)       | `tests/`                                                                  | ⬜ Not started |
 | 7. Release & Maintenance                          | —                                                                          | ⬜ Not started |
