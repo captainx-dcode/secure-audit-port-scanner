@@ -52,8 +52,8 @@ metrocare-tcp-scanner/
 │   └── sdlc/
 │       ├── 01-problem-definition.md
 │       ├── 02-problem-analysis.md
-│       ├── 03-algorithm-design.md    (pending)
-│       └── 04-threat-model.md        (pending)
+│       ├── 03-algorithm-design.md
+│       └── 04-threat-model.md
 ├── config/
 │   ├── scope.example.yaml        ← template; real scope.yaml is git-ignored
 │   └── scan-profile.yaml         ← timeouts, concurrency caps, jitter range
