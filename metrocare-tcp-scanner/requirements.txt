@@ -1,0 +1,25 @@
+# secure-audit-port-scanner
+# Dependencies are added here as each module (per docs/sdlc/03-algorithm-design.md)
+# is implemented — not all at once. This keeps the dependency list an honest
+# reflection of what's actually used, and keeps SCA scan output meaningful.
+
+# --- core / already in use ---
+PyYAML==6.0.2          # scope.yaml / config parsing (src/scope)
+pydantic==2.9.2         # typed, validated scope and config loading (src/scope)
+
+# --- testing ---
+pytest==8.3.3
+
+# --- added in later commits, left here as a roadmap (uncomment when implemented) ---
+# pyahocorasick            # src/identify — signature matching
+# python-Levenshtein        # src/identify — fuzzy matching
+# scikit-learn              # src/identify — ML fallback (phase 2)
+# python-nmap               # src/scanner — cross-check validation
+# cryptography              # src/evidence — manifest signing
+# Jinja2                    # src/report — stage report templates
+# python-docx               # src/report — final report
+# WeasyPrint                # src/report — PDF export
+# matplotlib                # src/report — findings charts
+# hypothesis                # tests/fuzz — banner parser fuzzing
+# bandit                    # SAST, dev-only
+# pip-audit                 # SCA, dev-only

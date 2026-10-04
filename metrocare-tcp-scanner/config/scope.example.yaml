@@ -1,0 +1,24 @@
+# Copy this file to scope.yaml and fill in real values before any run.
+# scope.yaml is git-ignored on purpose — it names real, authorized targets
+# and must never be committed.
+#
+# Referenced in docs/sdlc/01-problem-definition.md (Inputs table) and
+# docs/sdlc/04-threat-model.md (§5.1 Scope Gate).
+
+authorizer: "Jane Doe, CISO, MetroCare Hospital"   # who authorized this engagement
+
+engagement_window:
+  start: "2026-10-01T00:00:00Z"
+  end: "2026-10-31T23:59:59Z"
+
+authorized_targets:
+  - "192.168.100.0/24"      # Flatiron NAT lab network
+  # - "192.168.100.23"      # individual host example
+
+excluded_targets:
+  - "192.168.100.1"         # example: gateway/router excluded from scope
+
+notes: >
+  This is a lab/portfolio engagement against the Flatiron NAT network
+  (Kali + Metasploitable), simulating the MetroCare Hospital scenario.
+  Not a real client engagement.

@@ -1,0 +1,38 @@
+# Scan behavior settings. The *_max values are hard ceilings referenced in
+# docs/sdlc/04-threat-model.md (§5.2) — config below them is honored,
+# config above them is clamped, never rejected silently.
+
+profile: connect        # connect (default, socket-based) | stealth (not yet implemented)
+
+concurrency:
+  max_in_flight: 50
+  max_in_flight_ceiling: 200     # hard ceiling; config cannot exceed this
+
+timing:
+  connect_timeout_seconds: 2.0
+  jitter_min_ms: 10
+  jitter_max_ms: 150
+
+banner:
+  read_timeout_seconds: 3.0
+  max_bytes: 4096                 # hard cap referenced in threat model §5.3
+
+ports:
+  default_set: top_1000           # top_1000 | top_100 | all | custom
+  priority_first:                 # scanned before the rest, in this order
+    - 21    # FTP
+    - 22    # SSH
+    - 23    # Telnet
+    - 25    # SMTP
+    - 53    # DNS
+    - 80    # HTTP
+    - 139   # SMB
+    - 443   # HTTPS
+    - 445   # SMB
+    - 3306  # MySQL
+    - 5432  # PostgreSQL
+    - 8009  # AJP
+    - 8180  # HTTP alt / Tomcat
+
+budget:
+  max_total_seconds: 600          # feeds the DP scheduler (docs/sdlc/03 §3b)

@@ -1,0 +1,36 @@
+# --- Authorization / sensitive config: never commit the real scope file ---
+config/scope.yaml
+!config/scope.example.yaml
+
+# --- Scan output / evidence: run artifacts, not source ---
+evidence/*
+!evidence/.gitkeep
+
+# --- ML artifacts: versioned separately once phase 2 begins, not committed wholesale ---
+models/*
+!models/.gitkeep
+
+# --- Python ---
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+.mypy_cache/
+*.egg-info/
+build/
+dist/
+
+# --- Virtual environments ---
+.venv/
+venv/
+env/
+
+# --- Editor / OS ---
+.vscode/
+.idea/
+.DS_Store
+
+# --- Secrets ---
+*.pem
+*.key
+.env
