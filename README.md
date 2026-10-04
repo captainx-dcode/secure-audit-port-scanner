@@ -1,4 +1,3 @@
-
 # metrocare-tcp-scanner
 
 A Python TCP port scanner and enumeration toolkit built around a secure
@@ -35,7 +34,7 @@ Following the course's Process Algorithms SDLC. Documented so far:
 | 2. Problem Analysis                               | [`docs/sdlc/02-problem-analysis.md`](docs/sdlc/02-problem-analysis.md)     | ✅ Done        |
 | 3. Algorithm Design (pseudocode, data structures) | `docs/sdlc/03-algorithm-design.md`                                        | ✅ Done        |
 | 4. Threat Model (STRIDE)                          | `docs/sdlc/04-threat-model.md`                                            | ✅ Done        |
-| 5. Implementation                                 | `src/`                                                                    | ⬜ Not started |
+| 5. Implementation                                 | `src/`                                                                    | 🔶 In progress |
 | 6. Verification (tests, fuzzing, SAST, SCA)       | `tests/`                                                                  | ⬜ Not started |
 | 7. Release & Maintenance                          | —                                                                          | ⬜ Not started |
 
