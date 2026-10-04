@@ -2,6 +2,19 @@
 # Dependencies are added here as each module (per docs/sdlc/03-algorithm-design.md)
 # is implemented — not all at once. This keeps the dependency list an honest
 # reflection of what's actually used, and keeps SCA scan output meaningful.
+#
+# REQUIRED PYTHON VERSION: 3.12 (see .python-version). Not a style
+# preference -- compiled dependencies here and on the roadmap below
+# (pydantic-core now; later pyahocorasick, scikit-learn, cryptography,
+# WeasyPrint) ship prebuilt wheels for mainstream Python versions, but
+# very new releases (e.g. 3.14) lag behind by months. Running on a
+# version newer than the ecosystem supports forces pip to compile from
+# source, which fails outright when the Rust/C toolchain itself (e.g.
+# PyO3) doesn't yet support that Python version either. Pinning 3.12
+# also matters for the project's own reproducibility requirement
+# (docs/sdlc/01-problem-definition.md) -- evidence manifests record
+# dependency versions, and that's only meaningful if every run uses
+# the same interpreter version, not whatever was newest at install time.
 
 # --- core / already in use ---
 PyYAML==6.0.2          # scope.yaml / config parsing (src/scope)
