@@ -25,7 +25,7 @@ pytest==8.3.3
 
 # --- added in later commits, left here as a roadmap (uncomment when implemented) ---
 pyahocorasick==2.3.1    # src/identify — signature matching (verified: clean cp312-win_amd64 wheel)
-# python-Levenshtein        # src/identify — fuzzy matching
+python-Levenshtein==0.27.5  # src/identify — fuzzy matching (verified: clean cp312-win_amd64 wheel, incl. its Levenshtein dependency)
 # scikit-learn              # src/identify — ML fallback (phase 2)
 # python-nmap               # src/scanner — cross-check validation
 # cryptography              # src/evidence — manifest signing
