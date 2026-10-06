@@ -17,14 +17,14 @@
 # the same interpreter version, not whatever was newest at install time.
 
 # --- core / already in use ---
-PyYAML==6.0.2          # scope.yaml / config parsing (src/scope)
-pydantic==2.9.2         # typed, validated scope and config loading (src/scope)
+PyYAML==6.0.2            # scope.yaml / config parsing (src/scope)
+pydantic==2.13.5         # typed, validated scope and config loading (src/scope)
 
 # --- testing ---
 pytest==8.3.3
 
 # --- added in later commits, left here as a roadmap (uncomment when implemented) ---
-# pyahocorasick            # src/identify — signature matching
+pyahocorasick==2.3.1    # src/identify — signature matching (verified: clean cp312-win_amd64 wheel)
 # python-Levenshtein        # src/identify — fuzzy matching
 # scikit-learn              # src/identify — ML fallback (phase 2)
 # python-nmap               # src/scanner — cross-check validation
