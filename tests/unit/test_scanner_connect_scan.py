@@ -63,13 +63,53 @@ def test_scan_port_open_on_listening_server():
     asyncio.run(run())
 
 
-def test_scan_port_closed_on_refused_connection():
+def test_scan_port_closed_on_refused_connection_monkeypatched():
+    """
+    Deterministically confirms scan_port maps ConnectionRefusedError to
+    CLOSED, independent of any real OS/network/antivirus timing. This is
+    the test that actually proves the exception-handling branch is
+    correct; the real-loopback variant below is a best-effort smoke test
+    on top of it, not a replacement for it.
+    """
+
+    async def refusing_open_connection(host, port):
+        raise ConnectionRefusedError()
+
+    async def run():
+        import unittest.mock as mock
+
+        with mock.patch("asyncio.open_connection", refusing_open_connection):
+            return await scan_port(
+                "127.0.0.1", 9999, timeout=1.0, jitter_range=(0, 0)
+            )
+
+    assert asyncio.run(run()) == PortState.CLOSED
+
+
+def test_scan_port_on_real_unused_loopback_port_is_closed_or_filtered():
+    """
+    Best-effort integration check against a real unused loopback port.
+
+    On Linux this reliably returns CLOSED (an immediate RST). On some
+    Windows configurations, antivirus/EDR software intercepts rapid local
+    connection attempts -- which is exactly what a port scanner does --
+    and the RST either doesn't arrive or arrives late enough to hit the
+    timeout, producing FILTERED instead. Per the module docstring,
+    FILTERED deliberately collapses "no response" and "network
+    uncertainty" into one state, so this is correct behavior from
+    scan_port's perspective even when the OS-level cause differs.
+
+    This test only asserts "not falsely OPEN" -- the CLOSED-specific
+    exception-handling guarantee is covered deterministically by
+    test_scan_port_closed_on_refused_connection_monkeypatched above.
+    """
+
     async def run():
         port = _find_unused_port()
-        state = await scan_port("127.0.0.1", port, timeout=1.0, jitter_range=(0, 0))
-        assert state == PortState.CLOSED
+        return await scan_port("127.0.0.1", port, timeout=1.0, jitter_range=(0, 0))
 
-    asyncio.run(run())
+    state = asyncio.run(run())
+    assert state in (PortState.CLOSED, PortState.FILTERED)
 
 
 def test_scan_port_on_open_callback_receives_live_connection():

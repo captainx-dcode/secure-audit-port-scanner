@@ -1,4 +1,4 @@
-# metrocare-tcp-scanner
+# audit-tcp-scanner
 
 A Python TCP port scanner and enumeration toolkit built around a secure
 SDLC. Developed as a simulated engagement for **MetroCare Hospital**:
